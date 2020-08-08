@@ -1,3 +1,1 @@
-const helloWorld = () => console.log('Hello World!');
-
-helloWorld();
+export const challenge = () => "";
