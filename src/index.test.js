@@ -1,10 +1,10 @@
-import { challenge } from "./index";
+import { stringFormat } from "./index";
 
 describe("something", () => {
   it("should return the same string", () => {
     const mockString = "Hello, Antonio";
 
-    const response = challenge(mockString);
+    const response = stringFormat(mockString);
     expect(response).toEqual(mockString);
   });
 
@@ -13,10 +13,10 @@ describe("something", () => {
     const variables = {
       name: "Antonio"
     };
-    expectedPhrase = "Hello, Antonio";
+    const expectedPhrase = "Hello, Antonio";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should ignore null values", () => {
@@ -25,22 +25,21 @@ describe("something", () => {
       name: "Antonio",
       surname: null
     };
-    expectedPhrase = "Hello, Antonio ";
+    const expectedPhrase = "Hello, Antonio ";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should ignore undefined values", () => {
     const phrase = "Hello, {name} {surname}";
     const variables = {
-      name: "Antonio",
-      surname: undefined
+      name: "Antonio"
     };
-    expectedPhrase = "Hello, Antonio ";
+    const expectedPhrase = "Hello, Antonio ";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should insert multiple values", () => {
@@ -49,10 +48,10 @@ describe("something", () => {
       name: "Antonio",
       surname: "Vitor"
     };
-    expectedPhrase = "Hello, Antonio Vitor";
+    const expectedPhrase = "Hello, Antonio Vitor";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should insert number", () => {
@@ -62,10 +61,10 @@ describe("something", () => {
       surname: "Vitor",
       age: 21
     };
-    expectedPhrase = "Hello, Antonio Vitor. I am 21 years old.";
+    const expectedPhrase = "Hello, Antonio Vitor. I am 21 years old.";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should insert nested properties", () => {
@@ -74,15 +73,16 @@ describe("something", () => {
     const variables = {
       name: "Antonio",
       surname: "Vitor",
-      age: 21 ,
+      age: 21,
       verbs: {
         guitar: "play"
       }
     };
-    expectedPhrase = "Hello, Antonio Vitor. I am 21 years old. I like to play guitar.";
+    const expectedPhrase =
+      "Hello, Antonio Vitor. I am 21 years old. I like to play guitar.";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 
   it("should insert array elements", () => {
@@ -91,19 +91,16 @@ describe("something", () => {
     const variables = {
       name: "Antonio",
       surname: "Vitor",
-      age: 21 ,
+      age: 21,
       verbs: {
         guitar: "play"
       },
-      food: [
-        'apple',
-        'banana',
-        'orange',
-      ]
+      food: ["apple", "banana", "orange"]
     };
-    expectedPhrase = "Hello, Antonio Vitor. I am 21 years old. I like to play guitar. I like to eat apple and orange.";
+    const expectedPhrase =
+      "Hello, Antonio Vitor. I am 21 years old. I like to play guitar. I like to eat apple and orange.";
 
-    const response = challenge(phrase, variables);
-    expect(response).toEqual(phrase);
+    const response = stringFormat(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
   });
 });
