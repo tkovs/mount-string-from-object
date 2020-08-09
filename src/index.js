@@ -9,13 +9,10 @@ export const stringFormat = (phrase, variables) => {
   return phrase;
 };
 const replacer = (p1, variables) => {
-    
+
   const parenteSisMatch = /(\w*)*\[(\d*)\]/;
   if (p1.match(parenteSisMatch)) {
-    const match = parenteSisMatch.exec(p1);
-    const property = match[1];
-    const valueProperty = match[2];
-    return variables[property][valueProperty];
+    return variables[p1.match(parenteSisMatch)[1]][p1.match(parenteSisMatch)[2]];
   }
 
   if (p1.includes(".")) {
