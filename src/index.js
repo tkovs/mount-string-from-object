@@ -9,12 +9,12 @@ export const stringFormat = (phrase, variables) => {
   return phrase;
 };
 const replacer = (p1, variables) => {
-
   const parenteSisMatch = /(\w*)*\[(\d*)\]/;
   if (p1.match(parenteSisMatch)) {
-    return variables[p1.match(parenteSisMatch)[1]][p1.match(parenteSisMatch)[2]];
+    return variables[p1.match(parenteSisMatch)[1]][
+      p1.match(parenteSisMatch)[2]
+    ];
   }
-
   if (p1.includes(".")) {
     const stringSplit = p1.split(".");
     let previousObject = variables;
