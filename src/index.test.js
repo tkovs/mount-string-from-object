@@ -68,6 +68,19 @@ describe("something", () => {
     expect(response).toEqual(expectedPhrase);
   });
 
+  it.only("should insert number 0", () => {
+    const phrase = "Hello, {name} {surname}. I am {age} years old.";
+    const variables = {
+      name: "Antonio",
+      surname: "Vitor",
+      age: 0
+    };
+    const expectedPhrase = "Hello, Antonio Vitor. I am 0 years old.";
+
+    const response = solution(phrase, variables);
+    expect(response).toEqual(expectedPhrase);
+  });
+
   it("should insert nested properties", () => {
     const phrase =
       "Hello, {name} {surname}. I am {age} years old. I like to {verbs.guitar} guitar.";
