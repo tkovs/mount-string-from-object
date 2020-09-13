@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
-import { stringFormat } from "./index";
+import { solution } from "./index";
 
 describe("something", () => {
   it("should return the same string", () => {
     const mockString = "Hello, Antonio";
 
-    const response = stringFormat(mockString);
+    const response = solution(mockString);
     expect(response).toEqual(mockString);
   });
 
@@ -16,7 +16,7 @@ describe("something", () => {
     };
     const expectedPhrase = "Hello, Antonio";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -28,7 +28,7 @@ describe("something", () => {
     };
     const expectedPhrase = "Hello, Antonio ";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -39,7 +39,7 @@ describe("something", () => {
     };
     const expectedPhrase = "Hello, Antonio ";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -51,7 +51,7 @@ describe("something", () => {
     };
     const expectedPhrase = "Hello, Antonio Vitor";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -64,7 +64,7 @@ describe("something", () => {
     };
     const expectedPhrase = "Hello, Antonio Vitor. I am 21 years old.";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -82,7 +82,7 @@ describe("something", () => {
     const expectedPhrase =
       "Hello, Antonio Vitor. I am 21 years old. I like to play guitar.";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 
@@ -101,7 +101,7 @@ describe("something", () => {
     const expectedPhrase =
       "Hello, Antonio Vitor. I am 21 years old. I like to play guitar. I like to eat apple and orange.";
 
-    const response = stringFormat(phrase, variables);
+    const response = solution(phrase, variables);
     expect(response).toEqual(expectedPhrase);
   });
 });
